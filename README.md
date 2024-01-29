@@ -10,4 +10,5 @@ It is a simple tool that allows backing up the MSSQL database. The user is respo
 - Logging
 - Send logs via SMTP
 - Upload backups to Google Drive
+- Take backup via Windows Service
   
