@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace MssqlQuickBackup.Business
 {
-    public class BackupHelper
+    public class BackupManager
     {
         public void StartBackup(string serverName, string databaseName, string userName, string password, string backupPath)
         {

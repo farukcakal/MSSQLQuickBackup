@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace MssqlQuickBackup.Business
 {
-    public class ConfigHelper
+    public class ConfigManager
     {
         private const string configFilePath = "config.ini";
 

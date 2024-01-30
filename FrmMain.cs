@@ -5,19 +5,19 @@ namespace MssqlQuickBackup
 {
     public partial class FrmMain : Form
     {
-        ConfigHelper configHelper;
-        BackupHelper backupHelper;
+        ConfigManager configManager;
+        BackupManager backupManager;
         public FrmMain()
         {
             InitializeComponent();
-            configHelper = new ConfigHelper();
-            backupHelper = new BackupHelper();
+            configManager = new ConfigManager();
+            backupManager = new BackupManager();
         }
 
         private void FillTextBoxes()
         {
             string serverName, databaseName, userName, password, backupPath;
-            configHelper.LoadConfig(out serverName, out databaseName, out userName, out password, out backupPath);
+            configManager.LoadConfig(out serverName, out databaseName, out userName, out password, out backupPath);
 
             txtServerName.Text = serverName;
             txtDatabaseName.Text = databaseName;
@@ -33,7 +33,7 @@ namespace MssqlQuickBackup
             string password = txtPassword.Text;
             string backupPath = txtPath.Text;
 
-            configHelper.SaveConfig(serverName, databaseName, userName, password, backupPath);
+            configManager.SaveConfig(serverName, databaseName, userName, password, backupPath);
         }
 
         private void btnSaveSettings_Click(object sender, System.EventArgs e)
@@ -62,7 +62,7 @@ namespace MssqlQuickBackup
 
         private void btnBackup_Click(object sender, System.EventArgs e)
         {
-            backupHelper.StartBackup(txtServerName.Text, txtDatabaseName.Text, txtUsername.Text, txtPassword.Text, txtPath.Text);
+            backupManager.StartBackup(txtServerName.Text, txtDatabaseName.Text, txtUsername.Text, txtPassword.Text, txtPath.Text);
         }
     }
 }
