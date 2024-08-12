@@ -7,11 +7,15 @@ namespace MssqlQuickBackup
     {
         ConfigManager configManager;
         BackupManager backupManager;
+        ScheduledTaskManager scheduledTaskManager;
+        public bool scheduledTaskStatus = false; 
         public FrmMain()
         {
             InitializeComponent();
             configManager = new ConfigManager();
             backupManager = new BackupManager();
+            scheduledTaskManager = new ScheduledTaskManager();
+            scheduledTaskStatus = scheduledTaskManager.CheckTaskStatus();
         }
 
         private void FillTextBoxes()
@@ -44,6 +48,8 @@ namespace MssqlQuickBackup
         private void FrmMain_Load(object sender, System.EventArgs e)
         {
             FillTextBoxes();
+            lblTaskStatus.Text = scheduledTaskStatus ? "Task Active" : "Task Passive";
+            btnStartService.Text = scheduledTaskStatus ? "Remove Scheduled Task" : "Create Scheduled Task";
         }
 
         private void btnSelectPath_Click(object sender, System.EventArgs e)
@@ -63,6 +69,21 @@ namespace MssqlQuickBackup
         private void btnBackup_Click(object sender, System.EventArgs e)
         {
             backupManager.StartBackup(txtServerName.Text, txtDatabaseName.Text, txtUsername.Text, txtPassword.Text, txtPath.Text);
+        }
+
+        private void btnStartService_Click(object sender, System.EventArgs e)
+        {
+            if(!scheduledTaskStatus)
+            {
+                FrmScheduledTask frm = new FrmScheduledTask(scheduledTaskStatus, lblTaskStatus, btnStartService);
+                frm.ShowDialog();
+            }
+            else
+            {
+                scheduledTaskManager.DeleteTask();
+                scheduledTaskStatus = false;
+                lblTaskStatus.Text = "Task Passive";
+            }
         }
     }
 }

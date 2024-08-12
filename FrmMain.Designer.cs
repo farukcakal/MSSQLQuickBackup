@@ -42,7 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnStartService = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblTaskStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnBackup
@@ -157,29 +157,30 @@
             // 
             // btnStartService
             // 
-            this.btnStartService.Location = new System.Drawing.Point(156, 171);
+            this.btnStartService.Location = new System.Drawing.Point(82, 171);
             this.btnStartService.Name = "btnStartService";
-            this.btnStartService.Size = new System.Drawing.Size(123, 23);
+            this.btnStartService.Size = new System.Drawing.Size(197, 23);
             this.btnStartService.TabIndex = 4;
-            this.btnStartService.Text = "Start / Create Service";
+            this.btnStartService.Text = "Create Scheduled Task";
             this.btnStartService.UseVisualStyleBackColor = true;
+            this.btnStartService.Click += new System.EventHandler(this.btnStartService_Click);
             // 
-            // label6
+            // lblTaskStatus
             // 
-            this.label6.AutoSize = true;
-            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.Location = new System.Drawing.Point(12, 176);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Service Status: Running";
+            this.lblTaskStatus.AutoSize = true;
+            this.lblTaskStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTaskStatus.Location = new System.Drawing.Point(12, 176);
+            this.lblTaskStatus.Name = "lblTaskStatus";
+            this.lblTaskStatus.Size = new System.Drawing.Size(64, 13);
+            this.lblTaskStatus.TabIndex = 5;
+            this.lblTaskStatus.Text = "Task Active";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(291, 201);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblTaskStatus);
             this.Controls.Add(this.btnStartService);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -221,7 +222,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnStartService;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblTaskStatus;
     }
 }
 

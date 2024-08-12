@@ -1,44 +1,14 @@
 ﻿using System;
-using System.IO;
-using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MssqlQuickBackup.Business
+namespace Actions.Business
 {
     public class ConfigManager
     {
         private const string configFilePath = "config.ini";
-        private const string actionsConfigFilePath = "actions/config.ini";
-
-        public void SaveConfig(string serverName, string databaseName, string userName, string password, string backupPath)
-        {
-            try
-            {
-                using (StreamWriter writer = new StreamWriter(configFilePath))
-                {
-                    writer.WriteLine($"ServerName={serverName}");
-                    writer.WriteLine($"DatabaseName={databaseName}");
-                    writer.WriteLine($"UserName={userName}");
-                    writer.WriteLine($"Password={password}");
-                    writer.WriteLine($"BackupPath={backupPath}");
-                }
-
-                using (StreamWriter writer = new StreamWriter(actionsConfigFilePath))
-                {
-                    writer.WriteLine($"ServerName={serverName}");
-                    writer.WriteLine($"DatabaseName={databaseName}");
-                    writer.WriteLine($"UserName={userName}");
-                    writer.WriteLine($"Password={password}");
-                    writer.WriteLine($"BackupPath={backupPath}");
-                }
-
-                MessageBox.Show("Config saved successfully.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
         public void LoadConfig(out string serverName, out string databaseName, out string userName, out string password, out string backupPath)
         {
             serverName = "";
@@ -85,7 +55,7 @@ namespace MssqlQuickBackup.Business
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                Console.WriteLine(ex.ToString());
             }
         }
     }
