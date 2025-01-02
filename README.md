@@ -5,7 +5,7 @@ It is a simple tool that allows backing up the MSSQL database. The user is respo
 
 ## Todos
 
-- Configure Helper (Done)
+- Config Helper (Done)
 - Backup Helper (Done)
 - Logging
 - Send logs via SMTP
